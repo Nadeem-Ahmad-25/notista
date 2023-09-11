@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+i {
+    cursor: pointer;
+}
+image-container {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+image-container:hover {
+  transform: scale(1.05); /* Scale the image on hover for a 3D effect */
+  border-radius: 15px; /* Rounded edges on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow on hover */
+}

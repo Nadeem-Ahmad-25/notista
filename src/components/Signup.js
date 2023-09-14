@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Imagecont from "./Imagecont";
 
-export default function Signup() {
+export default function Signup(props) {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
   const navigate = useNavigate();
   const {password, cpassword} = credentials;
@@ -31,11 +31,13 @@ export default function Signup() {
         alert('Registration successful!');
         localStorage.setItem("token", data.authdata);
         navigate('/');
+        props.showAlert("succesfully signed in", "success");
+
       } else {
-        alert('Registration failed. Please try again.');
+        props.showAlert("invalid credentials", "danger");
       }
     } else {
-      alert('Passwords do not match. Please try again.');
+      props.showAlert("passwords do not match", "warning");
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -29,13 +29,13 @@ export default function Login() {
         // Login successful
         localStorage.setItem("token", data.authdata);
         navigate('/');
+        props.showAlert("login succesfull", "success");
+        
       } else {
-        // Login failed, display an error message
-        alert('Login failed. Please check your credentials and try again.');
+        props.showAlert("invalid credentials", "danger");
       }
     } else {
-      // Missing email or password, display an error message
-      alert('Please provide both email and password.');
+      props.showAlert("Please provide both email and password.", "warning");
     }
   };
 

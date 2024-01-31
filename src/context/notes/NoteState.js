@@ -18,6 +18,8 @@ export default function NoteState(props) {
        setNotes(jresponse)
     
     }
+
+    // function to add notes to the list of notes.
         const addnote = async (title, description, tag) => {
             const response = await fetch(`${host}/api/notes/addnotes`, {
                 method: "POST",
